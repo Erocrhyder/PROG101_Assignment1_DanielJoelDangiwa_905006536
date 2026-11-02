@@ -1,0 +1,102 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="4.2">
+    <attributes>
+        <attribute name="name" value="Community Flood Alert and Response Information System Flowchart"/>
+        <attribute name="authors" value="HP"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2026-10-31 03:26:36 PM"/>
+        <attribute name="created" value="SFA7REVTS1RPUC0wSTIyS0U3OzIwMjYtMTAtMjU7MDQ6MDU6NTggQU07MjQyNA=="/>
+        <attribute name="edited" value="SFA7REVTS1RPUC0wSTIyS0U3OzIwMjYtMTAtMjU7MDI6MzM6NTUgUE07NTsyNTQ3"/>
+        <attribute name="edited" value="T3duZXI7REVTS1RPUC1HUkpVS1MxOzIwMjYtMTAtMzE7MDM6MjY6MzYgUE07NTszMDE2"/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="ObservationDateTime, UpdateDateTime, Location, UserContactInformation" type="String" array="False" size=""/>
+            <declare name="ContinousHeavyRain, RapidRise, WaterDisruption, ImmediateDanger, DrainOverflow, TidalOverflow, WaterAccumulation, BuildingInfiltration" type="String" array="False" size=""/>
+            <declare name="UserChoice" type="Integer" array="False" size=""/>
+            <output expression="&quot;Welcome to the Community Flood Alert and Response Information System (CFARIS)&quot;" newline="True"/>
+            <output expression="&quot;Kindly choose from the options below&quot;" newline="True"/>
+            <output expression="&quot;1. Submit a flood report&quot; &amp; ToChar(13) &amp; &quot;2. Check The Latest Update&quot; &amp; ToChar(13) &amp; &quot;3. Exit&quot;" newline="True"/>
+            <input variable="UserChoice"/>
+            <if expression="UserChoice==1">
+                <then>
+                    <output expression="&quot;You've chosen to submit a flood report.&quot;" newline="True"/>
+                    <output expression="&quot;Please enter the name of the location that has been affected.&quot;" newline="True"/>
+                    <input variable="Location"/>
+                    <output expression="&quot;When was this observed?&quot;" newline="True"/>
+                    <input variable="ObservationDateTime"/>
+                    <output expression="&quot;Thank you for your valued input, kindly answer the following questions with 'Yes' or 'No' based on what you observed&quot;" newline="True"/>
+                    <output expression="&quot;Has heavy rain been falling continously in or near the affected area?&quot;" newline="True"/>
+                    <input variable="ContinousHeavyRain"/>
+                    <output expression="&quot;Have nearby rivers, streams, or drainage channels risen noticeably above their usual levels?&quot;" newline="True"/>
+                    <input variable="RapidRise"/>
+                    <output expression="&quot;Are drains or waterways blocked, overflowing, or unable to carry away rainwater?&quot;" newline="True"/>
+                    <input variable="DrainOverflow"/>
+                    <output expression="&quot;Has floodwater entered an occupied building in the affected area?&quot;" newline="True"/>
+                    <input variable="BuildingInfiltration"/>
+                    <output expression="&quot;Is water beginning to accumulate in low-lying areas or on roads?&quot;" newline="True"/>
+                    <input variable="WaterAccumulation"/>
+                    <output expression="&quot;Has water been observed disrupting routes or community services (Schools, Clinics, businesses, etc)?&quot;" newline="True"/>
+                    <input variable="WaterDisruption"/>
+                    <output expression="&quot;Is anyone trapped, injured, or in immediate danger because of the flooding&quot;" newline="True"/>
+                    <input variable="ImmediateDanger"/>
+                    <if expression="ImmediateDanger==&quot;Yes&quot; OR BuildingInfiltration==&quot;Yes&quot;">
+                        <then>
+                            <output expression="&quot;Risk Assessment: Urgent&quot;" newline="True"/>
+                            <output expression="&quot;Area: &quot; &amp; Location &amp; ToChar(13) &amp; &quot;Risk Assessment: Urgent&quot; &amp; ToChar(13) &amp; &quot;Observation Date &amp; Time: &quot; &amp; ObservationDateTime &amp; ToChar(13) &amp; &quot;Safety Guidance: Move away from affected areas and to a safer place if you can, do not walk or drive through floodwater. If anyone is trapped, injured, or in immediate danger, contact local emergency services or authorities (Call NDMA toll-free: 1199).&quot;" newline="True"/>
+                        </then>
+                        <else>
+                            <if expression="RapidRise==&quot;Yes&quot; OR DrainOverflow==&quot;Yes&quot; OR WaterDisruption== &quot;Yes&quot;">
+                                <then>
+                                    <output expression="&quot;Risk Assessment: Warning&quot;" newline="True"/>
+                                    <output expression="&quot;Area: &quot; &amp; Location &amp; ToChar(13) &amp; &quot;Risk Assessment: Warning&quot; &amp; ToChar(13) &amp; &quot;Observation Date &amp; Time: &quot; &amp; ObservationDateTime &amp; ToChar(13) &amp; &quot;Safety Guidance: Avoid drains and floodwater, follow local emergency instructions and stay alert for changing conditions&quot;" newline="True"/>
+                                </then>
+                                <else>
+                                    <if expression="ContinousHeavyRain==&quot;Yes&quot; OR WaterAccumulation==&quot;Yes&quot;">
+                                        <then>
+                                            <output expression="&quot;Risk Assessment: Advisory&quot;" newline="True"/>
+                                            <output expression="&quot;Area: &quot; &amp; Location &amp; ToChar(13) &amp; &quot;Risk Assessment: Advisory&quot; &amp; ToChar(13) &amp; &quot;Observation Date &amp; Time: &quot; &amp; ObservationDateTime &amp; ToChar(13) &amp; &quot;Safety Guidance: Prepare to move to a safer place if conditions worsen and follow local emergency instructions if given, avoid reported flood-prone areas and affected routes&quot;" newline="True"/>
+                                        </then>
+                                        <else>
+                                            <if expression="ImmediateDanger==&quot;No&quot; AND BuildingInfiltration==&quot;No&quot; AND DrainOverflow==&quot;No&quot; AND WaterDisruption==&quot;No&quot; AND ContinousHeavyRain==&quot;No&quot; AND WaterAccumulation==&quot;No&quot; AND RapidRise==&quot;No&quot;">
+                                                <then>
+                                                    <output expression="&quot;Risk Assessment: Safe&quot;" newline="True"/>
+                                                    <output expression="&quot;Area: &quot; &amp; Location &amp; ToChar(13) &amp; &quot;Risk Assessment: Safe&quot; &amp; ToChar(13) &amp; &quot;Observation Date &amp; Time: &quot; &amp; ObservationDateTime &amp; ToChar(13) &amp; &quot;Safety Guidance: No immediate signs of flooding were reported but this does not guarantee safety, continue to monitor the environment and follow any officisl instructions&quot;" newline="True"/>
+                                                </then>
+                                                <else>
+                                                    <output expression="&quot;Risk Assessment: Unclear&quot;" newline="True"/>
+                                                    <output expression="&quot;Area: &quot; &amp; Location &amp; ToChar(13) &amp; &quot;Risk Assessment: Unclear&quot; &amp; ToChar(13) &amp; &quot;Observation Date &amp; Time: &quot; &amp; ObservationDateTime &amp; ToChar(13) &amp; &quot;Safety Guidance: Information was unclear and there is not enough information to assess the situation.&quot;" newline="True"/>
+                                                </else>
+                                            </if>
+                                        </else>
+                                    </if>
+                                </else>
+                            </if>
+                        </else>
+                    </if>
+                </then>
+                <else>
+                    <if expression="UserChoice==2">
+                        <then>
+                            <output expression="&quot;Please enter the area you would like to check&quot;" newline="True"/>
+                            <input variable="Location"/>
+                            <output expression="&quot;Area: &quot; &amp; Location &amp; ToChar(13) &amp; &quot;Risk Assessment: &quot; &amp; &quot;Safe&quot; &amp; ToChar(13) &amp; &quot;Observation Date &amp; Time: &quot; &amp; &quot;25 October 2026, 10:00 AM&quot; &amp; ToChar(13) &amp; &quot;Safety Guidance (At time of update): No immediate signs of flooding were reported but this does not guarantee safety. Continue to monitor the environment and follow any official instructions&quot;" newline="True"/>
+                        </then>
+                        <else>
+                            <if expression="UserChoice==3">
+                                <then>
+                                    <output expression="&quot;You have chosen to exit.&quot;" newline="True"/>
+                                </then>
+                                <else>
+                                    <output expression="&quot;Your input was invalid, please try again next time.&quot;" newline="True"/>
+                                </else>
+                            </if>
+                        </else>
+                    </if>
+                </else>
+            </if>
+            <output expression="&quot;Thank you for using the Community Flood Alert and Response Information System. Goodbye.&quot;" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>
