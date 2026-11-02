@@ -1,0 +1,67 @@
+Function Main
+    Declare String ObservationDateTime, UpdateDateTime, Location, UserContactInformation
+    Declare String ContinousHeavyRain, RapidRise, WaterDisruption, ImmediateDanger, DrainOverflow, TidalOverflow, WaterAccumulation, BuildingInfiltration
+    Declare Integer UserChoice
+
+    Output "Welcome to the Community Flood Alert and Response Information System (CFARIS)"
+    Output "Kindly choose from the options below"
+    Output "1. Submit a flood report" & ToChar(13) & "2. Check The Latest Update" & ToChar(13) & "3. Exit"
+    Input UserChoice
+    If UserChoice==1
+        Output "You've chosen to submit a flood report."
+        Output "Please enter the name of the location that has been affected."
+        Input Location
+        Output "When was this observed?"
+        Input ObservationDateTime
+        Output "Thank you for your valued input, kindly answer the following questions with 'Yes' or 'No' based on what you observed"
+        Output "Has heavy rain been falling continously in or near the affected area?"
+        Input ContinousHeavyRain
+        Output "Have nearby rivers, streams, or drainage channels risen noticeably above their usual levels?"
+        Input RapidRise
+        Output "Are drains or waterways blocked, overflowing, or unable to carry away rainwater?"
+        Input DrainOverflow
+        Output "Has floodwater entered an occupied building in the affected area?"
+        Input BuildingInfiltration
+        Output "Is water beginning to accumulate in low-lying areas or on roads?"
+        Input WaterAccumulation
+        Output "Has water been observed disrupting routes or community services (Schools, Clinics, businesses, etc)?"
+        Input WaterDisruption
+        Output "Is anyone trapped, injured, or in immediate danger because of the flooding"
+        Input ImmediateDanger
+        If ImmediateDanger=="Yes" OR BuildingInfiltration=="Yes"
+            Output "Risk Assessment: Urgent"
+            Output "Area: " & Location & ToChar(13) & "Risk Assessment: Urgent" & ToChar(13) & "Observation Date & Time: " & ObservationDateTime & ToChar(13) & "Safety Guidance: Move away from affected areas and to a safer place if you can, do not walk or drive through floodwater. If anyone is trapped, injured, or in immediate danger, contact local emergency services or authorities (Call NDMA toll-free: 1199)."
+        Else
+            If RapidRise=="Yes" OR DrainOverflow=="Yes" OR WaterDisruption== "Yes"
+                Output "Risk Assessment: Warning"
+                Output "Area: " & Location & ToChar(13) & "Risk Assessment: Warning" & ToChar(13) & "Observation Date & Time: " & ObservationDateTime & ToChar(13) & "Safety Guidance: Avoid drains and floodwater, follow local emergency instructions and stay alert for changing conditions"
+            Else
+                If ContinousHeavyRain=="Yes" OR WaterAccumulation=="Yes"
+                    Output "Risk Assessment: Advisory"
+                    Output "Area: " & Location & ToChar(13) & "Risk Assessment: Advisory" & ToChar(13) & "Observation Date & Time: " & ObservationDateTime & ToChar(13) & "Safety Guidance: Prepare to move to a safer place if conditions worsen and follow local emergency instructions if given, avoid reported flood-prone areas and affected routes"
+                Else
+                    If ImmediateDanger=="No" AND BuildingInfiltration=="No" AND DrainOverflow=="No" AND WaterDisruption=="No" AND ContinousHeavyRain=="No" AND WaterAccumulation=="No" AND RapidRise=="No"
+                        Output "Risk Assessment: Safe"
+                        Output "Area: " & Location & ToChar(13) & "Risk Assessment: Safe" & ToChar(13) & "Observation Date & Time: " & ObservationDateTime & ToChar(13) & "Safety Guidance: No immediate signs of flooding were reported but this does not guarantee safety, continue to monitor the environment and follow any officisl instructions"
+                    Else
+                        Output "Risk Assessment: Unclear"
+                        Output "Area: " & Location & ToChar(13) & "Risk Assessment: Unclear" & ToChar(13) & "Observation Date & Time: " & ObservationDateTime & ToChar(13) & "Safety Guidance: Information was unclear and there is not enough information to assess the situation."
+                    End
+                End
+            End
+        End
+    Else
+        If UserChoice==2
+            Output "Please enter the area you would like to check"
+            Input Location
+            Output "Area: " & Location & ToChar(13) & "Risk Assessment: " & "Safe" & ToChar(13) & "Observation Date & Time: " & "25 October 2026, 10:00 AM" & ToChar(13) & "Safety Guidance (At time of update): No immediate signs of flooding were reported but this does not guarantee safety. Continue to monitor the environment and follow any official instructions"
+        Else
+            If UserChoice==3
+                Output "You have chosen to exit."
+            Else
+                Output "Your input was invalid, please try again next time."
+            End
+        End
+    End
+    Output "Thank you for using the Community Flood Alert and Response Information System. Goodbye."
+End
