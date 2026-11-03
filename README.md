@@ -1,6 +1,24 @@
 # PROG101_Assignment1_DanielJoelDangiwa_905006536
 This is assignment 1 for Programming Logic and Design about a Community Flood Alert and Response system in Sierra Leone
 
+# ALgorithm of the system
+a)	Start the system.
+b)	Display the options: Submit a flood report, Check the latest flood update, or Exit.
+c)	IF the user chooses "Check the latest flood update":
+I.	Inquire about the area of choice
+II.	Display the latest authorized update for that area, including its status and update time.
+d)	IF the user chooses "Exit": Close the system.
+e)	IF the reporter chooses "Submit a flood report":
+I.	Present the reporter with a set of flood-observation questions inquiring about the affected area/location, observation date and time, and answers about simple questions regarding what the reporter can/has observed - for example whether water is rising at a rapid pace, overflowing, entering an occupied building, or disrupting a route.
+f)	Use the reporter's answers to the flood-observation questions to assign a preliminary risk level. Classify the report or risk levels using the given criteria in order of priority:
+•	Urgent: Any immediate-danger condition has been reported, such as someone being trapped or injured, fast-moving or quickly rising water, water entering an occupied building, or floodwater covering a road or bridge.
+•	Warning: No urgent condition has been reported, but the reporter has reported water is approaching a home or beginning to disrupt a route.
+•	Advisory: Only localized standing water has been reported, with no rapid rise, fast flow, building infiltration, or route disruption.
+•	Safe: No signs of potential flooding have been reported.
+•	Unclear: The necessary details are missing, uncertain, or do not fit into the previous categories.
+g)	Display an update containing the area/location affected, risk assessment, date & time of observation, and the appropriate pre-written safety guidance instructions associated with the assigned risk level.
+h)	End. 
+
 # Pseudocode of the system
 Function Main
     Declare String ObservationDateTime, UpdateDateTime, Location, UserContactInformation
